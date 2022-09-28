@@ -24,33 +24,34 @@ namespace VisorDeImagen
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close(); 
+            this.Close(); /*Cerrar el form*/
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            linkLabel1.LinkVisited = true;
+            linkLabel1.LinkVisited = true; /*Marcar que el link fue visto*/
             System.Diagnostics.Process.Start("Calc");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            linkLabel2.LinkVisited = true;
+            linkLabel2.LinkVisited = true; /*Marcar que el link fue visto*/
             System.Diagnostics.Process.Start("IExplore", "http://www.ucol.mx");
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            linkLabel3.LinkVisited = true;
+            linkLabel3.LinkVisited = true; /*Marcar que el link fue visto*/
             System.Diagnostics.Process.Start("C:\\");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            OpenFileDialog ofd = new OpenFileDialog();
+            if(ofd.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
-                this.Text = String.Concat("Visor de Imagenes(" + openFileDialog1.FileName + ")");
+                Image image = Image.FromFile(ofd.FileName);
+                pictureBox1.Image = image;
             }
         }
     }
